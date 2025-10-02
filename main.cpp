@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 struct BSTNode {
@@ -107,6 +108,24 @@ void postorderPrint(BSTNode* root) {
     postorderPrint(root->right);
     cout << root->data << " ";
 
+}
+
+void levelorder(BinaryTreeNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    queue<BinaryTreeNode*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        BinaryTreeNode* current = q.front();
+        q.pop();
+
+        cout << current->data << " ";
+        if (current->left) { q.push(current->left);}
+        if (current->right) { q.push(current->right);}
+    }
 }
 
 int main(){
