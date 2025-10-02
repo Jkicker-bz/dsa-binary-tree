@@ -90,6 +90,15 @@ void inorderPrint(BSTNode* root) {
     inorderPrint(root->right);
 }
 
+void preorderPrint(BSTNode* root) {
+    if(!root) {
+        return;
+    }
+    cout << root->data << " ";
+    preorderPrint(root->left);
+    preorderPrint(root->right);
+}
+
 int main(){
 
 return 0;
