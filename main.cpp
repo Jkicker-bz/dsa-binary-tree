@@ -99,6 +99,16 @@ void preorderPrint(BSTNode* root) {
     preorderPrint(root->right);
 }
 
+void postorderPrint(BSTNode* root) {
+    if(!root) {
+        return;
+    }
+    postorderPrint(root->left);
+    postorderPrint(root->right);
+    cout << root->data << " ";
+
+}
+
 int main(){
 
 return 0;
