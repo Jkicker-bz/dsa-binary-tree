@@ -128,6 +128,15 @@ void levelorder(BinaryTreeNode* root) {
     }
 }
 
+void freeTree(BSTNode* root) {
+       if(!root) {
+           return;
+       }
+         freeTree(root->left);
+         freeTree(root->right);
+    	 delete root;
+}
+
 int main(){
 
 return 0;
