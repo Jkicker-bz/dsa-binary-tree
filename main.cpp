@@ -137,6 +137,14 @@ void freeTree(BSTNode* root) {
     	 delete root;
 }
 
+BSTNode* minValueNode(BSTNode* root) {
+    BSTNode* curr = root;
+    while (curr && curr->left) {
+	curr = curr->left;
+    }
+    return curr;
+}
+
 int main(){
    BSTNode* root = nullptr;
 
