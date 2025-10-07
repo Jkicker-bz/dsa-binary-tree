@@ -20,7 +20,7 @@ void insertRecursive(BSTNode*& root, int value){
 	return;
    }
    if(value < root->data) {
-	inserRecursive(root->left, value);
+	insertRecursive(root->left, value);
    }
    if(value > root->data) {
 	insertRecursive(root->right, value);
@@ -49,7 +49,7 @@ void insertIterative(BSTNode*& root,int value) {
 	if(value < parent->data){
 	    parent->left = new BSTNode(value);
 	} else{
-	    parent-right = new BSTNode(value);
+	    parent->right = new BSTNode(value);
 	}
 }
 
@@ -110,16 +110,16 @@ void postorderPrint(BSTNode* root) {
 
 }
 
-void levelorder(BinaryTreeNode* root) {
+void levelorderPrint(BSTNode* root) {
     if (root == nullptr) {
         return;
     }
 
-    queue<BinaryTreeNode*> q;
+    queue<BSTNode*> q;
     q.push(root);
 
     while (!q.empty()) {
-        BinaryTreeNode* current = q.front();
+        BSTNode* current = q.front();
         q.pop();
 
         cout << current->data << " ";
@@ -138,7 +138,41 @@ void freeTree(BSTNode* root) {
 }
 
 int main(){
+   BSTNode* root = nullptr;
+
+    insertRecursive(root, 8);
+    insertIterative(root, 3);
+    insertIterative(root, 10);
+    insertRecursive(root, 1);
+    insertRecursive(root, 6);
+    insertIterative(root, 14);
+    insertRecursive(root, 4);
+    insertIterative(root, 7);
+    insertRecursive(root, 13);
+
+
+    cout << "Inorder traversal: ";
+    inorderPrint(root);
+
+    cout << "\nPreorder traversal: ";
+    preorderPrint(root);
+
+    cout << "\nPostorder traversal: ";
+    postorderPrint(root);
+
+    cout << "\nLevelorder traversal: ";
+    levelorderPrint(root);
+
+    cout << "\n";
+
+    cout << "Search 7 (rec): " <<
+        (searchRecursive(root,7)?"Found":"Not Found") << "\n";
+    cout << "Search 9 (it): "  << 
+        (searchIterative(root,9)?"Found":"Not Found") << "\n";
+
+   // Always free dynamically allocated memory
+    freeTree(root);
+    root = nullptr;
 
 return 0;
 }
-
